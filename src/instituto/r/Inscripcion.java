@@ -59,11 +59,13 @@ public class Inscripcion {
       
     public int situacionAlumno(boolean aprobado) {
         if (nota > 6) {
+            System.out.println("aprobado");
             aprobado = true;
 
         } else {
 
             if (nota < 6) {
+                System.out.println("desaprobado");
                 aprobado = false;
             }
         }

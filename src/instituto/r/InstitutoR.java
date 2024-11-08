@@ -31,12 +31,7 @@ public class InstitutoR {
         inscripciones.add(new Inscripcion(alumnos.get(3), cursos.get(3), 2, true, 03));
         inscripciones.add(new Inscripcion(alumnos.get(4), cursos.get(4), 6, true, 04));
 
-        
-        
-        
-        
-        
-        //busqueda//
+        //busqueda de alumno//
         int alumnoBuscado = 1;
         boolean encontrado = false;
         int i = 0;
@@ -44,7 +39,7 @@ public class InstitutoR {
             Alumno alumnoActual = alumnos.get(i);
             if (alumnoActual.getMatricula() == alumnoBuscado) {
                 System.out.println("el alumno es: " + alumnoActual.getNombre());
-                encontrado=true;
+                encontrado = true;
             }
             i++;
 
@@ -52,6 +47,53 @@ public class InstitutoR {
         if (!encontrado) {
             System.out.println("ese alumno no esta");
         }
+
+        //buscar por inscripcion//
+        int IDBuscado = 0;
+        boolean encontradoInscripcion = false;
+        i = 0;
+        while (i < inscripciones.size() && !encontradoInscripcion) {
+            Inscripcion inscripcionActual = inscripciones.get(i);
+            if (inscripcionActual.getID() == IDBuscado) {
+                System.out.println("La inscripción es del alumno: " + inscripcionActual.getAlumno().getNombre());
+                System.out.println("Curso: " + inscripcionActual.getCurso().getNombre());
+                System.out.println("docente: " + inscripcionActual.getCurso().getDocente());
+                System.out.println("Nota: " + inscripcionActual.getNota());
+                System.out.println("situacion: " + inscripcionActual.situacionAlumno(encontrado));
+
+                encontradoInscripcion = true;
+            }
+            i++;
+
+        }
+
+        if (!encontradoInscripcion) {
+            System.out.println("Esa inscripción no está registrada.");
+        }
     }
 
+    //mostrar cantidad de aporbados y desaprobados//
+    
+  List<Inscripcion>inscripciones;{
+    int cantidadAprobados = 0;
+    int cantidadDesaprobados = 0;
+   
+    for (Inscripcion inscripcion: inscripciones){
+      if (inscripcion.isSituacion()){
+          cantidadAprobados++;
+          System.out.println("cantidad de aprobados: " + cantidadAprobados);
+      }
+      else{
+          cantidadDesaprobados++;
+          System.out.println("cantidad de desaprobados: " + cantidadDesaprobados);
+      }
+
+       
+    
+    
+    }
+    
+    }
 }
+
+
